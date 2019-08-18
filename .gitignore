@@ -1,6 +1,7 @@
 # custom
-boards/__pycache__/
+*__pycache__*
 .idea/
+*.pyc
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
