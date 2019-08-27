@@ -1,0 +1,36 @@
+{% load widget_tweaks %}
+
+{% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+
+                {% if form.is_bound %}
+                    <!-- 提交无效数值页面 -->
+                    {% if field.errors %}
+                        {% render_field field class="form-control is-invalid" %}
+
+                        {% for error in field.errors %}
+                            <div class="invalid-feedback">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    {% else %}
+                        <!-- 提交有效数值页面 -->
+                        {% render_field field class="form-control is-valid" %}
+                    {% endif %}
+
+                {% else %}
+                    <!-- 初始状态页面 -->
+                    {% render_field field class="form-control" %}
+                {% endif %}
+
+
+                <!-- 显示帮助信息 -->
+                {% if field.help_text %}
+                    <small class="form-text text-muted">
+                        {{ field.help_text }}
+                    </small>
+                {% endif %}
+            </div>
+        {% endfor %}
